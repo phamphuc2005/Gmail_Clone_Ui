@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Trash</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="https://www.google.com/gmail/about/static-2.0/images/logo-gmail.png?fingerprint=c2eaf4aae389c3f885e97081bb197b97" />
+  <link rel="stylesheet" href="fonts/fontawesome-free-6.2.1-web/css/all.css">
+</head>
+<style>
+  .input-group:focus-within {
+    background-color: white !important;
+  }
+
+  .tag:hover {
+    background-color: #eee;
+  }
+
+  .mailRow:hover {
+    border-top: 2px solid #eaf1fb;
+    border-bottom: 3px solid #eaf1fb;
+  }
+
+  .mailRow:hover .time-mail {
+    display: none;
+  }
+
+  .mailRow:hover .delete-mail {
+    display: block !important;
+  }
+
+  .mailRow:hover .delete-mail .delete-btn:hover {
+    background-color: #eee !important;
+  }
+
+  .icon-btn:hover {
+    background-color: #eee;
+  }
+
+</style>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="box-shadow: none;">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center" style="background-color: #f6f8fc;">
+        <button class="icon-btn navbar-toggler align-self-center" type="button" data-toggle="minimize" style="height: 48px; width: 48px;border-radius: 50%;">
+          <span class="icon-menu"></span>
+        </button>
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png" class="mr-5" alt="logo"/></a>
+        <!-- <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a> -->
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end" style="background-color: #f6f8fc;">
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block" style="margin-left: -36px;">
+            <div class="input-group" style="background-color: #eaf1fb; width: 720px; height: 50px; border-radius: 10px; margin-top: 6px;">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search" style="margin-top: -13px; margin-left: 10px;"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control search-box" id="navbar-search-input" placeholder="in:trash" aria-label="search" aria-describedby="search" style="margin-top: -10px; margin-left: 15px;">
+              <div class="icon-btn" style=" cursor: pointer; height: 48px; width: 48px; border-radius: 50%; margin-top: -11px;">
+                <i class="fas fa-sliders" style="font-size: 20px; margin-top: 13px; margin-left: 14px;"></i>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li>
+            <div class="icon-btn" style="font-size: 22px; margin-right: 10px; margin-top: 10px; cursor: pointer; height: 48px; width: 48px; border-radius: 50%;">
+              <i class="fas fa-circle-question" title="Support" style="margin-top: 12px; margin-left: 12px;"></i>
+            </div>
+          </li>
+          <li>
+            <div class="icon-btn" style="font-size: 22px; margin-right: 10px; margin-top: 10px; cursor: pointer; height: 48px; width: 48px; border-radius: 50%;">
+              <i class="fas fa-gear" title="Support" style="margin-top: 12px; margin-left: 12px;"></i>
+            </div>
+          </li>
+          <li>
+            <div class="icon-btn" style="font-size: 22px; margin-right: 10px; margin-top: 10px; cursor: pointer; height: 48px; width: 48px; border-radius: 50%;">
+              <i class="fas fa-th" title="Support" style="margin-top: 12px; margin-left: 12px;"></i>
+            </div>
+          </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown" style="margin-right: -20px;" title="Tài khoản Google">
+              <img src="images/faces/face28.jpg" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown" style="margin-right: -30px; margin-top: -10px;">
+              <a class="dropdown-item">
+                <i class="ti-user"></i>
+                Profile
+              </a>
+              <a class="dropdown-item" href="/pages/samples/login.html">
+                <i class="ti-power-off"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #f6f8fc;">
+        <ul class="nav" style="margin-top: 10px;">
+          <li class="compose-mail nav-item" style="max-width: 140px;">
+            <button class="nav-link" style=" padding: 20px 30px 20px 24px; border-radius: 20px; background-color: #c2e7ff; max-width: 140px; border: none;" onclick="openNav()">
+              <i class="fas fa-pen menu-icon"></i>
+              <span class="menu-title">Compose</span>
+            </button>
+          </li>
+        </ul>
+        <ul class="nav" style="margin-top: -50px;">
+          <li class="nav-item" style="border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+            <a class="nav-link" href="allMail.html" style=" border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+              <i class="fas fa-envelopes-bulk menu-icon"></i>
+              <span class="menu-title">All mail</span>
+            </a>
+          </li>
+          <li class="nav-item" style="border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+            <a class="nav-link" href="index.html" style=" border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+              <i class="fas fa-inbox menu-icon"></i>
+              <span class="menu-title">Inbox</span>
+            </a>
+          </li>
+          <li class="nav-item" style="border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+            <a class="nav-link" href="sentMail.html" style=" border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;"> 
+              <i class="fas fa-location-arrow menu-icon"></i>
+              <span class="menu-title">Sent</span>
+            </a>
+          </li>
+          <li class="nav-item" style="border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+            <a class="nav-link" href="spamMail.html" style=" border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+              <i class="fas fa-exclamation-circle menu-icon"></i>
+              <span class="menu-title">Spam</span>
+            </a>
+          </li>
+          <li class="nav-item" style="border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+            <a class="nav-link" href="trash.html" style=" border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+              <i class="fas fa-trash-alt menu-icon"></i>
+              <span class="menu-title">Trash</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row" style="margin-top: -30px; margin-left: -50px; margin-right: -40px; margin-bottom: -30px;">
+            <div class="col-md-12 stretch-card">
+              <div class="card">
+                <div class="card-body" style="padding: 0;">
+                  <div style="display: flex; justify-content: space-between;">
+                    <div style="display: flex;">
+                      <div class="checkbox-all icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px; margin-left: 5px;">
+                        <input type="checkbox" id="" name="" value="" onclick="toggle(this); isShow == false ? showTrash() : hideTrash();" style="cursor: pointer; height: 18px; width: 18px; margin-top: 15px; margin-left: 15px;"/>
+                      </div>
+                      <div class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px;">
+                        <i class="fas fa-caret-down" style="margin-top: 15px; margin-left: 18px;"></i>
+                      </div>
+                      <div class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px;">
+                        <i class="fas fa-rotate-right" style="margin-top: 15px; margin-left: 16px;"></i>
+                      </div>
+                      <div class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px;">
+                        <i class="fas fa-ellipsis-vertical" style="margin-top: 15px; margin-left: 22px;"></i>
+                      </div>
+                      <div id="delete-select-btn" class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px; display: none;">
+                        <i class="fas fa-trash-alt" style="margin-top: 15px; margin-left: 17px;"></i>
+                      </div>
+                    </div>
+                    <div style="display: flex;">
+                      <div class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px;">
+                        <i class="fas fa-chevron-left" style="margin-top: 15px; margin-left: 18px;"></i>
+                      </div>
+                      <div class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px;">
+                        <i class="fas fa-chevron-right" style="margin-top: 15px; margin-left: 18px;"></i>
+                      </div>
+                      <div class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px; margin-right: 5px;">
+                        <i class="fas fa-keyboard" style="margin-top: 15px; margin-left: 15px;"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="height: 50px; border-top: 1px solid #eee; display: flex; background-color: #eee;">
+                    <div style="text-align: center; width: 100%; margin-top: 15px;">Thư trong Thùng rác sẽ được tự động xóa sau 30 ngày.
+                    </div>
+                  </div>
+                  <div class="table-responsive" style="min-height: 500px;">
+                    <table class="table ">
+                      <tbody>
+                        <tr class="mailRow" style="cursor: pointer;">
+                          <td style="padding: 0; width: 4%;">
+                            <div class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px; margin-left: 5px;">
+                              <input type="checkbox" id="" name="" value="" style="cursor: pointer; height: 18px; width: 18px; margin-top: 15px; margin-left: 15px;"/>
+                            </div>
+                          </td>
+                          <td class="font-weight-bold" style="width: 10%; padding: 5px;"><a href="mailContent.html" style="text-decoration: none; color: black;">vd@gmail.com</a></td>
+                          <td class="content-mail" style="padding: 5px;">
+                            <div class="message" style="width: 850px;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                              <a href="mailContent.html" style="text-decoration: none; color: black;">
+                                haha - Wishing my good friend a happy birthday. LLNP. More calenders to smash..... hope this day becomes one of the best for you. Happy birthday.
+                              </a>
+                            </div>
+                          </td>
+                          <td class="time-mail" style="width: 10%;">Thu Dec 15 2022 00:45:31</td>
+                          <td class="delete-mail" style="display: none; padding: 0; padding-left: 150px;">
+                            <div class="delete-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px;" title="Delete">
+                              <i class="fas fa-trash-alt" style="margin-top: 15px; margin-left: 18px;"></i>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="mailRow" style="cursor: pointer;">
+                          <td style="padding: 0; width: 4%;">
+                            <div class="icon-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px; margin-left: 5px;">
+                              <input type="checkbox" id="" name="" value="" style="cursor: pointer; height: 18px; width: 18px; margin-top: 15px; margin-left: 15px;"/>
+                            </div>
+                          </td>
+                          <td class="font-weight-bold" style="width: 10%; padding: 5px;"><a href="mailContent.html" style="text-decoration: none; color: black;">vd@gmail.com</a></td>
+                          <td class="content-mail" style="padding: 5px;">
+                            <div class="message" style="width: 850px;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                              <a href="mailContent.html" style="text-decoration: none; color: black;">
+                                haha - Wishing my good friend a happy birthday. LLNP. More calenders to smash..... hope this day becomes one of the best for you. Happy birthday.
+                              </a>
+                            </div>
+                          </td>
+                          <td class="time-mail" style="width: 10%;">Thu Dec 15 2022 00:45:31</td>
+                          <td class="delete-mail" style="display: none; padding: 0; padding-left: 150px;">
+                            <div class="delete-btn" style="cursor: pointer; border-radius: 50%; height: 48px; width: 48px;" title="Delete">
+                              <i class="fas fa-trash-alt" style="margin-top: 15px; margin-left: 18px;"></i>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div style="height: 60px; border-top: 1px solid #ddd; display: flex; justify-content: center; font-size: 12px;">
+                    <a href="" style="color: black; margin-top: 15px;">Điều khoản - </a>
+                    <a href="" style="color: black; margin-top: 15px;">- Bảo mật - </a>
+                    <a href="" style="color: black; margin-top: 15px;">- Chính sách chương trình</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
+
+  <div 
+    id="mySidepanel" 
+    style="width: 600px; height: 550px; position: fixed; z-index: 1; bottom: 0; right: 0; background-color: white; border: 1px solid #ddd; overflow: hidden; transition: 0.5s; display: none; margin-right: 60px; border-radius: 10px; box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);">
+    <div class="" style="background-color: #eaf1fb; height: 50px; padding: 15px;">
+      <h5 class="" id="exampleModalLabel" style="">New Mail</h5>
+      <button type="button" class="close" onclick="closeNav()" style="margin-top: -28px;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="" style="padding: 0;">
+      <div class="form-control" style="padding: 0; border: none; border-bottom: 1px solid #eee;">
+        <input placeholder="Receive" style="width: 100%; height: 100%; padding-left: 15px; border: none;"/>
+      </div>
+      <div class="form-control" style="padding: 0; border: none; border-bottom: 1px solid #eee;">
+        <input placeholder="Title" style="width: 100%; height: 100%; padding-left: 15px; border: none;"/>
+      </div>
+      <div class="form-control" style="padding: 0; border: none; border-bottom: 1px solid #eee; height: 300px;">
+        <textarea class="form-control" id="" rows="19" style="border: none;"></textarea>
+      </div>
+      <div class="form-control" style="padding: 0; border: none; border-bottom: 1px solid #eee;">
+        <input placeholder="" type="file" style="width: 100%; height: 100%; padding-left: 15px;margin-top: 12px; border: none;"/>
+      </div>
+    </div>
+    <div class="" style="height: 60px; padding: 10px 15px; display: flex; justify-content: space-between;">
+      <button type="button" class="btn btn-primary" style="background-color: #0b57d0;  border-radius: 30px; padding: 12px 40px;">Sent</button>
+      <button type="button" class="close">
+        <i class="fas fa-trash-alt" style=" margin-right: 5px; font-size: 20px; cursor: pointer;" onclick="closeNav()"></i>
+      </button>
+      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+    </div>
+  </div>
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+  <script>
+    function openNav() {
+      document.getElementById("mySidepanel").style.display = "block";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidepanel").style.display = "none";
+    }
+  </script>
+  <script>
+    function toggle(source) {
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i] != source)
+              checkboxes[i].checked = source.checked;
+      }
+    }
+    // document.getElementById("delete-select-btn").style.display = "none";
+    isShow = false;
+    function showTrash() {
+        document.getElementById("delete-select-btn").style.display = "block";
+        isShow = true;
+    }
+    function hideTrash() {
+      document.getElementById("delete-select-btn").style.display = "none";
+      isShow = false;
+    }
+  </script>
+</body>
+
+</html>
+
